@@ -31,9 +31,9 @@ jobs:
       run: pyinstaller -O --dist .\output .\src\main.py
 
     - name: Upload test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: Application
-          path: output
+      uses: actions/upload-artifact@v3
+      with:
+        name: Application
+        path: output
 
 
