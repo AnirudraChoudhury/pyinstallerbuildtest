@@ -27,7 +27,7 @@ jobs:
 
     - name: Packaging the code in exe
       shell: pwsh
-      run: pyinstaller -O --dist .\output .\src\main.py
+      run: pyinstaller -F --dist .\output .\src\main.py
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
