@@ -2,6 +2,8 @@ on:
   push:
    branches:
    - actiontest
+   tags:
+   - *
 
 jobs:
   build:
@@ -27,7 +29,7 @@ jobs:
 
     - name: Packaging the code in exe
       shell: pwsh
-      run: pyinstaller -F --dist .\output .\src\main.py
+      run: pyinstaller -D --dist -n PyinstallerBuild-${{ github.ref_name }} .\output .\src\main.py
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
