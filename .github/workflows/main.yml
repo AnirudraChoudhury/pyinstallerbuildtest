@@ -37,7 +37,7 @@ jobs:
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
-        name: Application
-        path: output
+        name: ${{ env.APPNAME }}-${{ github.ref_name }}
+        path: ${{ env.APPNAME }}
 
 
