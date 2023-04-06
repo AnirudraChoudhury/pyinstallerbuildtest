@@ -5,6 +5,9 @@ on:
    tags:
    - '*'
 
+env:
+  APPNAME: PyInstallerBuild
+
 jobs:
   build:
     runs-on: windows-latest
@@ -29,7 +32,7 @@ jobs:
 
     - name: Packaging the code in exe
       shell: pwsh
-      run: pyinstaller -D --dist -n PyinstallerBuild-${{ github.ref_name }} .\output .\src\main.py
+      run: pyinstaller -D --dist .\$APPNAME -n $APPNAME-${{ github.ref_name }} .\src\main.py
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
