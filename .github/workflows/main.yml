@@ -32,7 +32,7 @@ jobs:
 
     - name: Packaging the code in exe
       shell: pwsh
-      run: pyinstaller -D --dist .\$APPNAME -n $APPNAME-${{ github.ref_name }} .\src\main.py
+      run: pyinstaller -D --dist .\${{ env.APPNAME }} -n ${{ env.APPNAME }}-${{ github.ref_name }} .\src\main.py
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
