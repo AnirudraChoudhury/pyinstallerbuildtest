@@ -22,9 +22,6 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v2
 
-name: Perform a Pester test from the command-line
-        shell: pwsh
-        run: Test-Path resultsfile.log | Should -Be $true
     - name: installing required packages
       shell: pwsh
       run: pip install pyinstaller
