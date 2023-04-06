@@ -8,6 +8,9 @@ jobs:
     runs-on: windows-latest
     steps:
 
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
     - name: Setup Python
       uses: actions/setup-python@v3.1.3
       with:
@@ -17,10 +20,6 @@ jobs:
         cache: pip
         # The target architecture (x86, x64) of the Python interpreter.
         architecture: x64
-        
-
-    - name: Checkout the code
-      uses: actions/checkout@v2
 
     - name: installing required packages
       shell: pwsh
