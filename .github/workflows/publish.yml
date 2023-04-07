@@ -1,7 +1,5 @@
 on:
   push:
-   branches:
-   - actiontest
    tags:
    - '*'
 
@@ -34,10 +32,13 @@ jobs:
       shell: pwsh
       run: pyinstaller -D --dist .\${{ env.APPNAME }} -n ${{ env.APPNAME }}-${{ github.ref_name }} .\src\main.py
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v3
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        name: ${{ env.APPNAME }}-${{ github.ref_name }}
-        path: ${{ env.APPNAME }}
-
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .\${{ env.APPNAME }}\${{ env.APPNAME }}-${{ github.ref_name }}.exe
+        asset_name: mything
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "This is my release text"
 
